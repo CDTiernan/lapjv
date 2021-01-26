@@ -212,7 +212,7 @@ always_inline std::tuple<cost, cost, idx, idx>
 find_umins(
     idx dim, idx i, const cost *restrict assign_cost,
     const cost *restrict v) {
-  if constexpr(avx2) {
+  if (constexpr(avx2)) {
     return find_umins_avx2(dim, i, assign_cost, v);
   } else {
     return find_umins_regular(dim, i, assign_cost, v);
